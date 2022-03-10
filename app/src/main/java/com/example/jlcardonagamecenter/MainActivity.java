@@ -15,13 +15,13 @@ import com.example.jlcardonagamecenter.Login.Principal.PrincipalMenu;
 import com.example.jlcardonagamecenter.Login.RegistroData.RegistroData;
 
 public class MainActivity extends AppCompatActivity {
-    //creamos la variables locales que utlizaremos
-    //Editext
+
+    //Variables
+
     EditText et1, et2;
-    //Cursor
+
     private Cursor fila;
-    /*Creamos una variable string y la inicializamos con texto
-     que al final sera nuestro titulo de la aplicacion*/
+
     String Title = "Inicio de Sesión";
 
     @Override
@@ -29,18 +29,17 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //Pintamos el titulo de la actividad
+        //Pinta el titulo de la actividad
         this.setTitle(Title);
-        //habilitamos para que se pueda visualizar el action bar
+        //Habilita para que se pueda visualizar el action bar
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-        //Indicamos donde esta la imagen para el action bar
+        //Indica donde esta la imagen para el action bar
         getSupportActionBar().setIcon(R.drawable.ic_action_name);
-        //emperejamos las variable con el xml editText usuario y password
+        //Empereja las variable con el xml editText usuario y password
         et1 = (EditText) findViewById(R.id.etusuario);
         et2 = (EditText) findViewById(R.id.edtclave);
     }
 
-    //metodo de ingreso
     public void InicioSesion(View v) {
         /*Creamos un objeto de la clase DBHelper e
         instanciamos el constructor y damos el nonbre de

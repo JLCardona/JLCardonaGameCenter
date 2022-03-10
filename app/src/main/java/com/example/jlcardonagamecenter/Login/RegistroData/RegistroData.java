@@ -17,53 +17,47 @@ import com.example.jlcardonagamecenter.R;
 public class RegistroData extends AppCompatActivity {
 
 
-    /*Titulo de la actividad*/
+    //Titulo de la actividad
     String Title = "Registro de Usuarios";
-    /*EditText para el ingreso de datos del usuario*/
+    //EditText para el ingreso de datos del usuario
     EditText Etusurname, EtPass;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro_data);
-        /*Pintamos el titulo*/
+        //Pinta el titulo
         this.setTitle(Title);
-        /*Instanciamos las variables
-         * capturamos los datos*/
+        //Instanci las variables
         Etusurname = (EditText) findViewById(R.id.editTextTextUserName);
         EtPass = (EditText) findViewById(R.id.editTextTextPassword);
     }
 
-    /*Metodo Para registrar los datos del usuario*/
+    //Registra los datos del usuario
     public void RegistrarDataUser(View v) {
-        /*creamos un objeto de la clase DBHelper
-         * inicializamos el constructor
-         * nombramos la base de datos
-         * version de la base de datos*/
+        //Crea un objeto de la clase DBHelper
         DBHelper admin = new DBHelper(this);
-        /*Abrimos la base de datos para escritura*/
+        //Abre la base de datos
         SQLiteDatabase db = admin.getWritableDatabase();
-        /*creamos dos variables string
-         * inicializamos y convertimos*/
+        //Crea dos variables string y las inicializa
         String UserName = Etusurname.getText().toString();
         String PassUser = EtPass.getText().toString();
-        /*Creamos un objeto contentvalues y instanciamos*/
+        //Crea un objeto contentvalues y la instancia
         ContentValues values = new ContentValues();
-        /*capturamos valores*/
+        //Captura los valores
         values.put("username", UserName);
         values.put("clave_user", PassUser);
-        /*llamamos al insert damos el nombre de la base de datos
-         * y los valores*/
+        //Llama al insert con el nombre de la base de datos y los valores
         db.insert("userstable", null, values);
-        /*cerramos la base de datos*/
+        //Cierra la base de datos
         db.close();
-        /*Lanzamos una notificacion toast*/
+        //Lanza un toast
         Toast ToastMens = Toast.makeText(this, "Usuario registrado", Toast.LENGTH_SHORT);
-        /*mostramos el toast*/
+        //Muestra el toast
         ToastMens.show();
-        /*lanzamos la actividad*/
+        //Lanza la actividad
         Intent intent = new Intent(this, MainActivity.class);
-        /*iniciamos la actividad*/
+        //Inicia la actividad
         startActivity(intent);
     }
 }

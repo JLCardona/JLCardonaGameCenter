@@ -28,9 +28,9 @@ public class PrincipalMenu extends AppCompatActivity implements View.OnClickList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_principal_menu);
-        /*Creamos una variable string del titulo*/
+        //Crea una variable string para el titulo
         String Title = "Bienvenido a la App de JL Cardona";
-        /*Pintamos el titula de la actividad*/
+        //Pinta el titulo de la actividad
         this.setTitle(Title);
 
         boton2048 = (Button) findViewById(R.id.game2048);
