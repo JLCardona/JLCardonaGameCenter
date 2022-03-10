@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.jlcardonagamecenter">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.JLCardonaGameCenter">
+
+        <activity android:name=".Login.RegistroData.RegistroData" />
+        <activity android:name=".Login.Principal.PrincipalMenu" />
+        <activity android:name=".MainActivity" />
+        <activity android:name=".jlcardona2048.MainActivity2048" />
+        <activity android:name=".jlcardonaPegSolitaire.MainMenuActivityPegSolitaire" />
+        <activity android:name=".jlcardonaPegSolitaire.GameActivityPegSolitaire" />
+        <activity android:name=".jlcardona2048.BoardActivity2048" />
+        <activity android:name=".Score"/>
+        <activity android:name=".Users"/>
+
+        <activity
+            android:name=".SplashActivity"
+            android:exported="true"
+            tools:ignore="DuplicateActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
