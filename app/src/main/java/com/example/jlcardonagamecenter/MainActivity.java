@@ -41,58 +41,46 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void InicioSesion(View v) {
-        /*Creamos un objeto de la clase DBHelper e
-        instanciamos el constructor y damos el nonbre de
-         la base de datos y la version*/
+        //Crea un objeto de la clase DBHelper
         DBHelper admin = new DBHelper(this);
-        /*Abrimos la base de datos como escritura*/
+        //Abre la base de datos
         SQLiteDatabase db = admin.getWritableDatabase();
-        /*Creamos dos variables string y capturamos los datos
-         ingresado por el usuario y lo convertimos a string*/
+        //Crea dos variables para el usuario y contraseña
         String usuario = et1.getText().toString();
         String contrasena = et2.getText().toString();
-        /*inicializamos al cursor y llamamos al objeto de la base
-        de datos para realizar un sentencia query where donde
-         pasamos las dos variables nombre de usuario y password*/
+        //Inicializa el cursor y llama al objeto de la DataBase para realizar una query
         fila = db.rawQuery("select username,clave_user from userstable where username='" +
                 usuario + "' and clave_user='" + contrasena + "'", null);
-        /*Realizamos un try catch para captura de errores*/
+        //Try catch para la captura de errores
         try {
-            /*Condicional if preguntamos si cursor tiene algun dato*/
+
             if (fila.moveToFirst()) {
-//capturamos los valores del cursos y lo almacenamos en variable
+            //Captura los valores del cursor y los guarda
                 String usua = fila.getString(0);
                 String pass = fila.getString(1);
-                //preguntamos si los datos ingresados son iguales
+                //Pregunta si los datos ingresados son iguales
                 if (usuario.equals(usua) && contrasena.equals(pass)) {
-                    //si son iguales entonces vamos a otra ventana
-                    //Menu es una nueva actividad empty
+                    //Si son iguales entonces vamos a otra ventana
                     Intent ven = new Intent(this, PrincipalMenu.class);
-                    //lanzamos la actividad
                     startActivity(ven);
-                    //limpiamos las las cajas de texto
+                    //Limpia las cajas de texto
                     et1.setText("");
                     et2.setText("");
                 }
-            }//si la primera condicion no cumple entonces que envie un mensaje toast
+            }//Si la primera condicion no se cumple entonces envia un toast
             else {
                 Toast toast = Toast.makeText(this, "Datos incorrectos", Toast.LENGTH_LONG);
-                //mostramos el toast
                 toast.show();
             }
 
-        } catch (Exception e) {//capturamos los errores que ubieran
+        } catch (Exception e) {
             Toast toast = Toast.makeText(this, "Error" + e.getMessage(), Toast.LENGTH_LONG);
-            //mostramos el mensaje
             toast.show();
         }
     }
 
-    //metodo que nos envia a otra ventana
     public void RegistroData(View v) {
-        //creamos una variables e instanciamos al intent para que me muestra la clase
         Intent rdata = new Intent(this, RegistroData.class);
-        //lanzamos la actividad
         startActivity(rdata);
     }
 }
